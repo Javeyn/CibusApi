@@ -1,0 +1,35 @@
+{
+  "name": "cibusapi",
+  "version": "0.0.0",
+  "description": "cibusbackend",
+  "main": "server.js",
+  "dependencies": {
+    "clarifai": "^2.9.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.3",
+    "mongoose": "^5.9.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Javeyn/CibusApi.git"
+  },
+  "keywords": [
+    "Food",
+    "please!"
+  ],
+  "author": "Cibus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Javeyn/CibusApi/issues"
+  },
+  "homepage": "https://github.com/Javeyn/CibusApi#readme"
+}
