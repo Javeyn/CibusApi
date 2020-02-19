@@ -1,3 +1,4 @@
+
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
     firstname: {
@@ -81,6 +82,5 @@ module.exports = function (sequelize, DataTypes) {
     });
     // User.belongsToMany(models.Post, { through: "UserPost" })
   };
-  
   return User;
 };
