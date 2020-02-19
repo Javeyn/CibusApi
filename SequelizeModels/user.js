@@ -1,41 +1,86 @@
-module.exports = function(sequelize, DataTypes) {
+
+module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    first_name: {
+    firstname: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    last_name: {
+
+    lastname: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
+
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        len: [4]
+        len: [1]
       }
     },
+    // Giving the User model a password of type STRING with a minimum length
     password: {
-      type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-          len:[8]
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8]
       }
     },
+    // Giving the User model a email of type STRING with a minimum length
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [6]
+        isEmail: true,
       }
     },
+
+    profilePic: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isUrl: true
+      }
+    }
   });
+
+  User.associate = function (models) {
+    // We're saying that a Users should belong to an Author
+    // A User can't be created without an Author due to the foreign key constraint
+    User.hasMany(models.Post, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    User.hasMany(models.Comment, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    User.hasMany(models.Bookmark, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    User.belongsToMany(models.Following, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    User.belongsToMany(models.Follower, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    // User.belongsToMany(models.Post, { through: "UserPost" })
+  };
   return User;
 };
