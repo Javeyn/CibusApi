@@ -29,11 +29,7 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: true
             }
         });
-        Post.belongsTo(models.Bookmark, {
-            foreignKey: {
-                allowNull: true
-            }
-        });
+        Post.belongsToMany(models.User, { through: "Bookmark" });
         Post.hasMany(models.Ingredient, {
             onDelete: "cascade",
             foreignKey: {
@@ -47,12 +43,14 @@ module.exports = function (sequelize, DataTypes) {
               }
         });
         
-        Post.hasOne(model.Nutrition, {
+        Post.hasOne(models.Nutrition, {
             onDelete: "cascade",
             foreignKey: {
                 allowNull: false
               }
         })
+
+
     };
 
     return Post;
