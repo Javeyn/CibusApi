@@ -65,22 +65,17 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false
       }
     });
-    User.hasMany(models.Bookmark, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    User.belongsToMany(models.Following, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    User.belongsToMany(models.Follower, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    // User.belongsToMany(models.Post, { through: "UserPost" })
+    
+    // junction table with follower table
+    User.belongsToMany(models.User, { through: "Follower" , as: 'followerUserId',foreignKey:"followerUserId"});
+    User.belongsToMany(models.User, { through: "Follower", as: 'followerId',foreignKey:"followerId"});
+
+    // junction table with following table
+    User.belongsToMany(models.User, { through: "Following" , as: 'followingUserId', foreignKey: 'followingUserId' });
+    User.belongsToMany(models.User, { through: "Following", as: 'followingId', foreignKey: 'followingId' });
+
+    User.belongsToMany(models.Post, { through: "Bookmark"});
+    
   };
   return User;
 };
