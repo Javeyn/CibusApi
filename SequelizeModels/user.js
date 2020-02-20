@@ -45,7 +45,7 @@ module.exports = function (sequelize, DataTypes) {
     profilePic: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      // unique: true,
       validate: {
         isUrl: true
       }
@@ -57,22 +57,19 @@ module.exports = function (sequelize, DataTypes) {
     // A User can't be created without an Author due to the foreign key constraint
     User.hasMany(models.Post, {
       foreignKey: {
-        allowNull: false
-      }
+        allowNull: true
+    }
+      
     });
     User.hasMany(models.Comment, {
       foreignKey: {
-        allowNull: false
-      }
+        allowNull: true
+    }  
     });
     
     // junction table with follower table
     User.belongsToMany(models.User, { through: "Follower" , as: 'followerUserId',foreignKey:"followerUserId"});
     User.belongsToMany(models.User, { through: "Follower", as: 'followerId',foreignKey:"followerId"});
-
-    // junction table with following table
-    User.belongsToMany(models.User, { through: "Following" , as: 'followingUserId', foreignKey: 'followingUserId' });
-    User.belongsToMany(models.User, { through: "Following", as: 'followingId', foreignKey: 'followingId' });
 
     User.belongsToMany(models.Post, { through: "Bookmark"});
     

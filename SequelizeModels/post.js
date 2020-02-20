@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         recipe: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
             len: [1]
         }
 
