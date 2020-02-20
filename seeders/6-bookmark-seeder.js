@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Bookmarks', [{
+    return queryInterface.bulkInsert('Bookmark', [{
         PostId: 1,
         UserId: 1,
         createdAt: new Date(),

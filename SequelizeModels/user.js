@@ -45,7 +45,7 @@ module.exports = function (sequelize, DataTypes) {
     profilePic: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      // unique: true,
       validate: {
         isUrl: true
       }
@@ -57,13 +57,14 @@ module.exports = function (sequelize, DataTypes) {
     // A User can't be created without an Author due to the foreign key constraint
     User.hasMany(models.Post, {
       foreignKey: {
-        allowNull: false
-      }
+        allowNull: true
+    }
+      
     });
     User.hasMany(models.Comment, {
       foreignKey: {
-        allowNull: false
-      }
+        allowNull: true
+    }  
     });
     
     // junction table with follower table

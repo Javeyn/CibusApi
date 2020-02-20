@@ -2,7 +2,7 @@
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert('Nutritions', [{
+        return queryInterface.bulkInsert('Nutrition', [{
             calories: 10,
             fat: 10,
             calfat: 10,
@@ -22,6 +22,7 @@ module.exports = {
             vitc: 10,
             calcium: 10,
             iron: 10,
+            serving: 10,
             createdAt: new Date(),
             updatedAt: new Date(),
             PostId: 1
@@ -46,6 +47,7 @@ module.exports = {
             vitc: 10,
             calcium: 10,
             iron: 10,
+            serving: 10,
             createdAt: new Date(),
             updatedAt: new Date(),
             PostId: 2
@@ -70,6 +72,7 @@ module.exports = {
             vitc: 10,
             calcium: 10,
             iron: 10,
+            serving: 10,
             createdAt: new Date(),
             updatedAt: new Date(),
             PostId: 3
@@ -94,6 +97,7 @@ module.exports = {
             vitc: 10,
             calcium: 10,
             iron: 10,
+            serving: 10,
             createdAt: new Date(),
             updatedAt: new Date(),
             PostId: 4
